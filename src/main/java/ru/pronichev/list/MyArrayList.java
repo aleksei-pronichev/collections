@@ -2,7 +2,7 @@ package ru.pronichev.list;
 
 import ru.pronichev.collections.MyList;
 
-public class MyArrayList<T>  implements MyList<T> {
+public class MyArrayList<T> implements MyList<T> {
     private static final int DEFAULT_INITIAL_SIZE = 10;
 
     private Object[] array;
@@ -33,7 +33,7 @@ public class MyArrayList<T>  implements MyList<T> {
             throw new ArrayIndexOutOfBoundsException("index is bigger than array size");
         }
         checkIncreaseArray();
-        System.arraycopy(array, index, array, index + 1,  size - index);
+        System.arraycopy(array, index, array, index + 1, size - index);
         array[index] = element;
     }
 
@@ -56,7 +56,7 @@ public class MyArrayList<T>  implements MyList<T> {
             throw new ArrayIndexOutOfBoundsException();
         }
         Object obj = array[index];
-        System.arraycopy(array, index + 1, array, index ,  size - index + 1);
+        System.arraycopy(array, index + 1, array, index, size - index + 1);
         size--;
         return (T) obj;
     }

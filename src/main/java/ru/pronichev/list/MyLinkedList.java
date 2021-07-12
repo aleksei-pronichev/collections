@@ -35,7 +35,7 @@ public class MyLinkedList<T> implements MyList<T> {
             add(element);
         } else {
             Node<T> current = firstElement;
-            for (var i = 0; i < index-1; i++ ) {
+            for (var i = 0; i < index - 1; i++) {
                 current = current.getNext();
             }
             Node<T> newElement = new Node<>(element);
@@ -49,7 +49,7 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public T get(int index) {
         Node<T> current = firstElement;
-        for (var i = 0; i < index; i++ ) {
+        for (var i = 0; i < index; i++) {
             current = current.getNext();
         }
         return current.getValue();
@@ -66,7 +66,7 @@ public class MyLinkedList<T> implements MyList<T> {
             throw new ArrayIndexOutOfBoundsException();
         }
         Node<T> current = firstElement;
-        for (var i = 0; i < index-1; i++ ) {
+        for (var i = 0; i < index - 1; i++) {
             current = current.getNext();
         }
         Node<T> returnValue = current.getNext();

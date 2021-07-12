@@ -20,7 +20,7 @@ class MyArrayListTest {
         for (int i = 0; i < values.length; i++) {
             values[i] = i;
         }
-         myArrayList = new MyArrayList<>();
+        myArrayList = new MyArrayList<>();
         for (int value : values) {
             myArrayList.add(value);
         }

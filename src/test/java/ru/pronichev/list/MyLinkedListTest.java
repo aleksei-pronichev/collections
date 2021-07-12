@@ -18,7 +18,7 @@ class MyLinkedListTest {
         for (int i = 0; i < values.length; i++) {
             values[i] = i;
         }
-         myLinkedList = new MyLinkedList<>();
+        myLinkedList = new MyLinkedList<>();
         for (int value : values) {
             myLinkedList.add(value);
         }
