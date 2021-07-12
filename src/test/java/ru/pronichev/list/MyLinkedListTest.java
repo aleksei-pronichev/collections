@@ -83,4 +83,29 @@ class MyLinkedListTest {
             assertNotEquals(value, myLinkedList.get(i));
         }
     }
+
+    @Test
+    void push() {
+        this.add();
+    }
+
+    @Test
+    void peek() {
+        int size = myLinkedList.size();
+        for (int i = values.length - 1; i >= 0; i--) {
+            assertEquals(values[i], myLinkedList.peek());
+            assertEquals(size, myLinkedList.size());
+            myLinkedList.remove(i);
+            size--;
+        }
+    }
+
+    @Test
+    void pop() {
+        int size = myLinkedList.size();
+        for (int i = values.length - 1; i >= 0; i--) {
+            assertEquals(values[i], myLinkedList.pop());
+            assertEquals(--size, myLinkedList.size());
+        }
+    }
 }

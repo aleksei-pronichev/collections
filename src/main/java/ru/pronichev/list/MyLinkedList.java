@@ -1,8 +1,9 @@
 package ru.pronichev.list;
 
 import ru.pronichev.collections.MyList;
+import ru.pronichev.collections.MyStack;
 
-public class MyLinkedList<T> implements MyList<T> {
+public class MyLinkedList<T> implements MyList<T>, MyStack<T> {
 
     private Node<T> firstElement;
     private Node<T> lastElement;
@@ -61,16 +62,41 @@ public class MyLinkedList<T> implements MyList<T> {
     }
 
     @Override
+    public void push(T element) {
+        add(element);
+    }
+
+    @Override
+    public T peek() {
+        return lastElement.getValue();
+    }
+
+    @Override
+    public T pop() {
+        return remove(size - 1);
+    }
+
+    @Override
     public T remove(int index) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException();
         }
         Node<T> current = firstElement;
+        if (size == 1) {
+            firstElement = null;
+            lastElement = null;
+            size--;
+            return current.getValue();
+        }
         for (var i = 0; i < index - 1; i++) {
             current = current.getNext();
         }
+
         Node<T> returnValue = current.getNext();
         current.setNext(returnValue.getNext());
+        if (index == size - 1) {
+            lastElement = current;
+        }
         size--;
         return returnValue.getValue();
     }
