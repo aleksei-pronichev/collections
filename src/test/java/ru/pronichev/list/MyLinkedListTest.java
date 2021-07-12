@@ -139,8 +139,8 @@ class MyLinkedListTest {
     @Test
     void removeFirst() {
         int size = myLinkedList.size();
-        for (int i = 0; i < values.length; i++) {
-            assertEquals(values[i], myLinkedList.removeFirst());
+        for (int value : values) {
+            assertEquals(value, myLinkedList.removeFirst());
             assertEquals(--size, myLinkedList.size());
         }
     }
