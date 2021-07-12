@@ -101,7 +101,6 @@ class MyArrayListTest {
         Integer value = 3;
 
         int startSize = myArrayList.size();
-        System.out.println(myArrayList.get(3));
 
         myArrayList.removeValue(value);
 
