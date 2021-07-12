@@ -1,9 +1,10 @@
 package ru.pronichev.list;
 
 import ru.pronichev.collections.MyList;
+import ru.pronichev.collections.MyQueue;
 import ru.pronichev.collections.MyStack;
 
-public class MyLinkedList<T> implements MyList<T>, MyStack<T> {
+public class MyLinkedList<T> implements MyList<T>, MyStack<T>, MyQueue<T> {
 
     private Node<T> firstElement;
     private Node<T> lastElement;
@@ -81,21 +82,24 @@ public class MyLinkedList<T> implements MyList<T>, MyStack<T> {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        Node<T> current = firstElement;
+        Node<T> returnValue = firstElement;
+        Node<T> previousElement = firstElement;
+        for (var i = 0; i < index; i++) {
+            previousElement = returnValue;
+            returnValue = returnValue.getNext();
+        }
+
         if (size == 1) {
             firstElement = null;
             lastElement = null;
-            size--;
-            return current.getValue();
+        } else {
+            previousElement.setNext(returnValue.getNext());
         }
-        for (var i = 0; i < index - 1; i++) {
-            current = current.getNext();
-        }
-
-        Node<T> returnValue = current.getNext();
-        current.setNext(returnValue.getNext());
         if (index == size - 1) {
-            lastElement = current;
+            lastElement = previousElement;
+        }
+        if (index == 0) {
+            firstElement = returnValue.getNext();
         }
         size--;
         return returnValue.getValue();
@@ -120,6 +124,24 @@ public class MyLinkedList<T> implements MyList<T>, MyStack<T> {
         previous.setNext(current.getNext());
         size--;
         return current.getValue();
+    }
+
+    @Override
+    public void addLast(T element) {
+        add(element);
+    }
+
+    @Override
+    public T getFirst() {
+        if (size == 0) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return firstElement.getValue();
+    }
+
+    @Override
+    public T removeFirst() {
+        return remove(0);
     }
 
     private static class Node<T> {

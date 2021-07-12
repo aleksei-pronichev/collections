@@ -63,9 +63,10 @@ class MyLinkedListTest {
         int startSize = myLinkedList.size();
         int startValue = myLinkedList.get(3);
 
-        myLinkedList.remove(index);
+        int removeValue = myLinkedList.remove(index);
 
         assertEquals(startSize - 1, myLinkedList.size());
+        assertEquals(startValue, removeValue);
         assertNotEquals(startValue, myLinkedList.get(index));
     }
 
@@ -86,7 +87,12 @@ class MyLinkedListTest {
 
     @Test
     void push() {
-        this.add();
+        int value = 3;
+        int size = myLinkedList.size();
+        myLinkedList.push(value);
+
+        assertEquals(size + 1, myLinkedList.size());
+        assertEquals(value, myLinkedList.get(size));
     }
 
     @Test
@@ -105,6 +111,36 @@ class MyLinkedListTest {
         int size = myLinkedList.size();
         for (int i = values.length - 1; i >= 0; i--) {
             assertEquals(values[i], myLinkedList.pop());
+            assertEquals(--size, myLinkedList.size());
+        }
+    }
+
+    @Test
+    void addLast() {
+        int value = 3;
+        int size = myLinkedList.size();
+        myLinkedList.addLast(value);
+
+        assertEquals(size + 1, myLinkedList.size());
+        assertEquals(value, myLinkedList.get(size));
+    }
+
+    @Test
+    void getFirst() {
+        int size = myLinkedList.size();
+        for (int value : values) {
+            assertEquals(value, myLinkedList.getFirst());
+            assertEquals(size, myLinkedList.size());
+            myLinkedList.remove(0);
+            size--;
+        }
+    }
+
+    @Test
+    void removeFirst() {
+        int size = myLinkedList.size();
+        for (int i = 0; i < values.length; i++) {
+            assertEquals(values[i], myLinkedList.removeFirst());
             assertEquals(--size, myLinkedList.size());
         }
     }
