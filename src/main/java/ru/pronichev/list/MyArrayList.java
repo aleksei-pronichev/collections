@@ -51,7 +51,7 @@ public class MyArrayList<T>  implements MyList<T> {
     }
 
     @Override
-    public T removeValue(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -68,7 +68,7 @@ public class MyArrayList<T>  implements MyList<T> {
         }
         for (int i = 0; i < array.length; i++) {
             if (element.equals(array[i])) {
-                return removeValue(i);
+                return remove(i);
             }
         }
         throw new IllegalArgumentException("element not found");

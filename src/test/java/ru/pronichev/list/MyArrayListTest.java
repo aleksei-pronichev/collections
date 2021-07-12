@@ -90,7 +90,7 @@ class MyArrayListTest {
         int startSize = myArrayList.size();
         int startValue = myArrayList.get(3);
 
-        myArrayList.removeValue(index);
+        myArrayList.remove(index);
 
         assertEquals(startSize - 1, myArrayList.size());
         assertNotEquals(startValue, myArrayList.get(index));

@@ -9,7 +9,7 @@ public interface MyList<T> {
 
     int size();
 
-    T removeValue(int index);
+    T remove(int index);
 
     T removeValue(T element);
 }
