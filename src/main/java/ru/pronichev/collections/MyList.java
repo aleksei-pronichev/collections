@@ -1,15 +1,15 @@
 package ru.pronichev.collections;
 
 public interface MyList<T> {
-    void add(T obj);
+    void add(T element);
 
-    void add(int index, T obj);
+    void add(int index, T element);
 
     T get(int index);
 
     int size();
 
-    T remove(int index);
+    T removeValue(int index);
 
-    T remove(T obj);
+    T removeValue(T element);
 }

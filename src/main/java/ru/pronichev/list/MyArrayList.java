@@ -18,14 +18,14 @@ public class MyArrayList<T>  implements MyList<T> {
     }
 
     @Override
-    public void add(T obj) {
+    public void add(T element) {
         checkIncreaseArray();
-        array[size] = obj;
+        array[size] = element;
         size++;
     }
 
     @Override
-    public void add(int index, T obj) {
+    public void add(int index, T element) {
         if (index < 0) {
             throw new ArrayIndexOutOfBoundsException("Only positive numbers");
         }
@@ -34,7 +34,7 @@ public class MyArrayList<T>  implements MyList<T> {
         }
         checkIncreaseArray();
         System.arraycopy(array, index, array, index + 1,  size - index);
-        array[index] = obj;
+        array[index] = element;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class MyArrayList<T>  implements MyList<T> {
     }
 
     @Override
-    public T remove(int index) {
+    public T removeValue(int index) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -62,13 +62,13 @@ public class MyArrayList<T>  implements MyList<T> {
     }
 
     @Override
-    public T remove(T obj) {
-        if (obj == null) {
+    public T removeValue(T element) {
+        if (element == null) {
             throw new IllegalArgumentException("argument should be not null");
         }
         for (int i = 0; i < array.length; i++) {
-            if (obj.equals(array[i])) {
-                return remove(i);
+            if (element.equals(array[i])) {
+                return removeValue(i);
             }
         }
         throw new IllegalArgumentException("element not found");
